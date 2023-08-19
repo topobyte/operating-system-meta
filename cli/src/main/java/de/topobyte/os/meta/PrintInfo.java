@@ -37,6 +37,14 @@ public class PrintInfo
 			System.out.println("Description: " + linuxInfo.getDescription());
 			System.out.println("Release: " + linuxInfo.getRelease());
 			System.out.println("Codename: " + linuxInfo.getCodename());
+
+			VersionInfo inkscape = Software.getInkscapeVersionInfo();
+			if (inkscape.isInstalled()) {
+				System.out.printf("Inkscape: %d.%d.%d%n", inkscape.getMajor(),
+						inkscape.getMinor(), inkscape.getPatch());
+			} else {
+				System.out.println("Inkscape: not found");
+			}
 		}
 	}
 }
