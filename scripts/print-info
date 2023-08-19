@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DIR=$(dirname $0)
+CMD="$DIR/operating-system-meta.sh"
+CLASS="de.topobyte.os.meta.PrintInfo"
+
+exec "$CMD" "$CLASS" "$@"

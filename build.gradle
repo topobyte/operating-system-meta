@@ -1,0 +1,43 @@
+wrapper {
+    gradleVersion = '7.6.1'
+}
+
+allprojects {
+    group = pGroup
+    version = pVersion
+}
+
+project(':operating-system-meta') {
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+}
+
+project(':operating-system-meta-cli') {
+    apply plugin: 'application'
+}
+
+subprojects {
+    apply plugin: 'eclipse'
+
+    repositories {
+        maven {
+            url 'https://mvn.topobyte.de'
+        }
+        maven {
+            url 'https://mvn.slimjars.com'
+        }
+        mavenCentral()
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts {
+        archives sourcesJar
+    }
+}

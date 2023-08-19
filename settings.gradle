@@ -1,0 +1,3 @@
+include 'core', 'cli'
+project(':core').name = 'operating-system-meta'
+project(':cli').name = 'operating-system-meta-cli'
