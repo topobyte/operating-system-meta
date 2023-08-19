@@ -1,5 +1,7 @@
 dependencies {
     implementation project(':operating-system-meta')
+
+    runtimeOnly 'org.slf4j:slf4j-reload4j:1.7.36'
 }
 
 task copyJars(type: Copy) {

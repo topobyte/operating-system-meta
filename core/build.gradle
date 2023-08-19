@@ -7,6 +7,7 @@ eclipse.project.name = 'operating-system-meta'
 
 dependencies {
     api 'de.topobyte:process-utils:0.1.0'
+    api 'org.slf4j:slf4j-api:1.7.36'
 }
 
 def pomInfo = new XmlSlurper().parse(file('info.pom'));
