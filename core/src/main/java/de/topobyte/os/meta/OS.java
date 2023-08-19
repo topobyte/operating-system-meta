@@ -17,26 +17,30 @@
 
 package de.topobyte.os.meta;
 
-import java.io.IOException;
-
-public class PrintInfo
+public class OS
 {
-	public static void main(String[] args) throws IOException
+
+	private static final String OS = System.getProperty("os.name");
+	private static final String VENDOR = System.getProperty("java.vendor");
+
+	public static boolean isWindows()
 	{
-		System.out.println("Detecting Operating System basics...");
-		if (OS.isWindows()) {
-			System.out.println("This is Windows");
-		} else if (OS.isMacOs()) {
-			System.out.println("This is macOS");
-		} else if (OS.isAndroid()) {
-			System.out.println("This is Android");
-		} else if (OS.isLinux()) {
-			System.out.println("This is Linux");
-			LinuxInfo linuxInfo = Linux.getLinuxInfo();
-			System.out.println("Distributor: " + linuxInfo.getDistributorId());
-			System.out.println("Description: " + linuxInfo.getDescription());
-			System.out.println("Release: " + linuxInfo.getRelease());
-			System.out.println("Codename: " + linuxInfo.getCodename());
-		}
+		return OS != null && OS.toLowerCase().startsWith("win");
+	}
+
+	public static boolean isMacOs()
+	{
+		return OS != null && OS.toLowerCase().equals("mac os x");
+	}
+
+	public static boolean isLinux()
+	{
+		return OS != null && OS.toLowerCase().startsWith("linux")
+				&& !isAndroid();
+	}
+
+	public static boolean isAndroid()
+	{
+		return VENDOR != null && VENDOR.contains("Android");
 	}
 }
