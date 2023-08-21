@@ -10,6 +10,10 @@ dependencies {
     api 'org.slf4j:slf4j-api:1.7.36'
 }
 
+java {
+    withSourcesJar()
+}
+
 def pomInfo = new XmlSlurper().parse(file('info.pom'));
 
 publishing {
